@@ -291,7 +291,7 @@ namespace TOTPGen
         
         void CreditToolStripMenuItemClick(object sender, EventArgs e)
         {
-            MessageBox.Show("HouYu Li <lihouyu@phpex.net>", "Hello!", MessageBoxButtons.OK);
+            MessageBox.Show("Mainly by HouYu Li <lihouyu@phpex.net>", "Hello!", MessageBoxButtons.OK);
         }
     }
 }
