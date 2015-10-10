@@ -1,0 +1,24 @@
+TOTP Generator
+
+A simple TOTP passcode generator.
+Developed using SharpDevelop.
+
+Using code from:
+ * http://stackoverflow.com/questions/641361/base32-decoding
+ * http://www.codeproject.com/Articles/403355/Implementing-Two-Factor-Authentication-in-ASP-NET
+
+Official site:
+ * https://family.dandanyu.name/blog/index.php?c=TOTP+Generator
+
+Feature:
+ * Run as a tray icon
+ * Multiple accounts support
+ * 1 click copy code
+ * 30 seconds count down
+
+Requirements:
+ * .NET 4.0
+
+License:
+ * N/A for the main application
+ * For external code using in this application, please consult original author.
