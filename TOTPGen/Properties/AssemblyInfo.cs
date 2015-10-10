@@ -10,9 +10,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle ("TOTP Generator")]
 [assembly: AssemblyDescription ("Time based one-time password generator based on Google Authenticator")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("Pixelworks Inc.")]
-[assembly: AssemblyProduct ("IT Tool Set")]
-[assembly: AssemblyCopyright ("Copyright 2015")]
+[assembly: AssemblyCompany ("")]
+[assembly: AssemblyProduct ("")]
+[assembly: AssemblyCopyright ("")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 // This sets the default COM visibility of types in the assembly to invisible.
