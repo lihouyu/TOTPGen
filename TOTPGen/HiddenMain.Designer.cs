@@ -50,10 +50,10 @@ namespace TOTPGen
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.setSecretKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.creditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.creditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msTrayIcon.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,38 +67,45 @@ namespace TOTPGen
             this.creditToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.msTrayIcon.Name = "msTrayIcon";
-            this.msTrayIcon.Size = new System.Drawing.Size(153, 126);
+            this.msTrayIcon.Size = new System.Drawing.Size(143, 104);
             // 
             // accountsToolStripMenuItem
             // 
             this.accountsToolStripMenuItem.Enabled = false;
             this.accountsToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accountsToolStripMenuItem.Name = "accountsToolStripMenuItem";
-            this.accountsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.accountsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.accountsToolStripMenuItem.Text = "Accounts";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(139, 6);
             // 
             // setSecretKeyToolStripMenuItem
             // 
             this.setSecretKeyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.setSecretKeyToolStripMenuItem.Name = "setSecretKeyToolStripMenuItem";
-            this.setSecretKeyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.setSecretKeyToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.setSecretKeyToolStripMenuItem.Text = "Add Account";
             this.setSecretKeyToolStripMenuItem.Click += new System.EventHandler(this.AddNewAcct);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(139, 6);
+            // 
+            // creditToolStripMenuItem
+            // 
+            this.creditToolStripMenuItem.Name = "creditToolStripMenuItem";
+            this.creditToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.creditToolStripMenuItem.Text = "Credit";
+            this.creditToolStripMenuItem.Click += new System.EventHandler(this.CreditToolStripMenuItemClick);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
@@ -115,13 +122,6 @@ namespace TOTPGen
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.Timer1Tick);
-            // 
-            // creditToolStripMenuItem
-            // 
-            this.creditToolStripMenuItem.Name = "creditToolStripMenuItem";
-            this.creditToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.creditToolStripMenuItem.Text = "Credit";
-            this.creditToolStripMenuItem.Click += new System.EventHandler(this.CreditToolStripMenuItemClick);
             // 
             // HiddenMain
             // 

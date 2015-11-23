@@ -57,7 +57,7 @@ namespace TOTPGen
             // 
             this.txtSecret.Location = new System.Drawing.Point(118, 38);
             this.txtSecret.Name = "txtSecret";
-            this.txtSecret.PasswordChar = '#';
+            this.txtSecret.PasswordChar = '*';
             this.txtSecret.Size = new System.Drawing.Size(159, 22);
             this.txtSecret.TabIndex = 1;
             this.txtSecret.Enter += new System.EventHandler(this.TxtSecretEnter);

@@ -10,7 +10,7 @@
     <AssemblyName>TOTP Generator</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <ApplicationIcon>..\Clock.ico</ApplicationIcon>
+    <ApplicationIcon>..\icon.ico</ApplicationIcon>
     <NoWin32Manifest>False</NoWin32Manifest>
     <SignAssembly>False</SignAssembly>
     <DelaySign>False</DelaySign>
