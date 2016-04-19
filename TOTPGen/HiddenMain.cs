@@ -233,6 +233,17 @@ namespace TOTPGen
         
                     this._confApp.Save(ConfigurationSaveMode.Full, true);
                     
+                    // Update the hidden account ID
+                    ((ToolStripMenuItem)sender).Owner.Items[4].Text = thisAcct.ID;
+                    // Update the account menu item name
+                    for (int i = 0; i < this.msTrayIcon.Items.Count; i++) {
+                        if (this.msTrayIcon.Items[i].Text == this._sCurrAcctID) {
+                            this.msTrayIcon.Items[i].Text = thisAcct.ID;
+                            break;
+                        }
+                    }
+                    
+                    
                     iHasError = 0;
                 } else {
                     // Form closed
