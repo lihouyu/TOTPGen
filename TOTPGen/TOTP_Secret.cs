@@ -48,6 +48,13 @@ namespace TOTPGen
                 this._tsMenu = value;
             }
         }
+
+        public string CurrentCode
+        {
+            set {
+                this._tsMenu.DropDown.Items[0].Text = value;
+            }
+        }
         
         [ConfigurationProperty("Key", DefaultValue = "0000000000000000", IsRequired = true)]
         public string Key {
@@ -117,7 +124,7 @@ namespace TOTPGen
         {
             try {
                 base.BaseRemove(ID);
-            } catch (Exception e) {
+            } catch {
                 return false;
             }
             

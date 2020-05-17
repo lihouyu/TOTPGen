@@ -47,15 +47,15 @@ namespace TOTPGen
         }
         
         public void SetCodeLen(string sCodeLen) {
-            this.txtCodeLen.Text = sCodeLen;
+            this.numCodeLen.Value = Convert.ToInt32(sCodeLen);
         }
         
         public string GetCodeLen() {
-            return this.txtCodeLen.Text;
+            return this.numCodeLen.Value.ToString();
         }
         
         public void SetErrTxt(string sErrTxt) {
-            this.txtError.Text = sErrTxt;
+            this.toolStripStatusError.Text = sErrTxt;
         }
         
         void TxtSecretEnter(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace TOTPGen
         void Button1Click(object sender, EventArgs e)
         {
             if (this.ValidateInput()) {
-                this.txtError.Text = "";
+                this.toolStripStatusError.Text = "";
                 this._mainForm.SetDialogRs(DialogResult.OK);
                 this.Hide();
             }
@@ -77,7 +77,7 @@ namespace TOTPGen
         {
             if (e.KeyChar == (char)Keys.Enter) {
                 if (this.ValidateInput()) {
-                    this.txtError.Text = "";
+                    this.toolStripStatusError.Text = "";
                     this._mainForm.SetDialogRs(DialogResult.OK);
                     this.Hide();
                 }
@@ -86,20 +86,15 @@ namespace TOTPGen
         
         private bool ValidateInput() {
             if (this.txtAcctID.Text.Trim().Length == 0) {
-                this.txtError.Text = "Account Name cannot be empty!";
+                this.toolStripStatusError.Text = "Account Name cannot be empty!";
                 return false;
             }
             if (this.txtSecret.Text == TOTP_GA.DummySecret || this.txtSecret.Text.Trim().Length == 0 || this.txtSecret.Text.Trim().Length % 8 != 0) {
-                this.txtError.Text = "Invalid Secret Key!";
-                return false;
-            }
-            try {
-                Convert.ToInt32(this.txtCodeLen.Text.Trim());
-            } catch (Exception e) {
-                this.txtError.Text = "Code Length should be number!";
+                this.toolStripStatusError.Text = "Invalid Secret Key!";
                 return false;
             }
             return true;
         }
+
     }
 }

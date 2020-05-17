@@ -59,6 +59,8 @@ namespace TOTPGen
             // 
             // msTrayIcon
             // 
+            resources.ApplyResources(this.msTrayIcon, "msTrayIcon");
+            this.msTrayIcon.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.msTrayIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.accountsToolStripMenuItem,
             this.toolStripSeparator2,
@@ -67,57 +69,46 @@ namespace TOTPGen
             this.creditToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.msTrayIcon.Name = "msTrayIcon";
-            this.msTrayIcon.Size = new System.Drawing.Size(143, 104);
             // 
             // accountsToolStripMenuItem
             // 
-            this.accountsToolStripMenuItem.Enabled = false;
-            this.accountsToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.accountsToolStripMenuItem, "accountsToolStripMenuItem");
             this.accountsToolStripMenuItem.Name = "accountsToolStripMenuItem";
-            this.accountsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.accountsToolStripMenuItem.Text = "Accounts";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(139, 6);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // setSecretKeyToolStripMenuItem
             // 
             this.setSecretKeyToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.setSecretKeyToolStripMenuItem.Name = "setSecretKeyToolStripMenuItem";
-            this.setSecretKeyToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.setSecretKeyToolStripMenuItem.Text = "Add Account";
+            resources.ApplyResources(this.setSecretKeyToolStripMenuItem, "setSecretKeyToolStripMenuItem");
             this.setSecretKeyToolStripMenuItem.Click += new System.EventHandler(this.AddNewAcct);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(139, 6);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // creditToolStripMenuItem
             // 
             this.creditToolStripMenuItem.Name = "creditToolStripMenuItem";
-            this.creditToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.creditToolStripMenuItem.Text = "Credit";
+            resources.ApplyResources(this.creditToolStripMenuItem, "creditToolStripMenuItem");
             this.creditToolStripMenuItem.Click += new System.EventHandler(this.CreditToolStripMenuItemClick);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
             // 
             // trayIcon
             // 
             this.trayIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.trayIcon.BalloonTipText = "Access TOTP Generator Here :)";
-            this.trayIcon.BalloonTipTitle = "2FA TOTP Key Generator";
+            resources.ApplyResources(this.trayIcon, "trayIcon");
             this.trayIcon.ContextMenuStrip = this.msTrayIcon;
-            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
-            this.trayIcon.Text = "2FA TOTP Key Gen";
-            this.trayIcon.Visible = true;
             // 
             // timer1
             // 
@@ -125,16 +116,13 @@ namespace TOTPGen
             // 
             // HiddenMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 273);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HiddenMain";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Hidden";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.msTrayIcon.ResumeLayout(false);
             this.ResumeLayout(false);

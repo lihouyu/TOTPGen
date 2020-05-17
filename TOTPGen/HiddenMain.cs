@@ -27,10 +27,20 @@ namespace TOTPGen
         private TOTP_Secret _TOTPSecret;
         private TOTP_SecretInfoCollection _TOTPAccounts;
         private SetSecretForm _frmAddAcct;
-        
+
+        private int _intFirstRun = 0;
         private string _sCurrAcctID = "";
         private DialogResult _rsDialog = DialogResult.Cancel;
-        
+
+        private long[] _counter
+        {
+            get
+            {
+                long lTimeDiff = (long)(DateTime.UtcNow - this.UNIX_EPOCH).TotalSeconds;
+                return new long[2] { lTimeDiff / 30, lTimeDiff % 30 };
+            }
+        }
+
         public HiddenMain()
         {
             this.Hide();
@@ -66,19 +76,23 @@ namespace TOTPGen
             }
             this._TOTPAccounts = this._TOTPSecret.TOTPAccounts;
             if (this._TOTPAccounts.Count == 0) {
+                this._intFirstRun = 1;
                 this.AddNewAcct(null, null);
             }
             
             // Load accounts in menu
             for (int i = 0; i < this._TOTPAccounts.Count; i++) {
                 this._TOTPAccounts[i].MenuItem = this.CreateAcctMenu(this._TOTPAccounts[i].ID);
-                
+                this._TOTPAccounts[i].CurrentCode =
+                    TOTP_GA.GeneratePassword(this._TOTPAccounts[i].Key, this._counter[0], this._TOTPAccounts[i].CodeLen);
+
                 this.msTrayIcon.Items.Insert(i+1, 
                                             this._TOTPAccounts[i].MenuItem);
             }
                         
-            // Tooltip
-            this.trayIcon.ShowBalloonTip(5000);
+            // Tooltip only on first run
+            if (this._intFirstRun == 1)
+                this.trayIcon.ShowBalloonTip(5000);
             
             // Start timer
             this.timer1.Start();
@@ -91,26 +105,34 @@ namespace TOTPGen
         
         private void Timer1Tick(object sender, EventArgs e)
         {
-            long lTimeDiff = (long)(DateTime.UtcNow - this.UNIX_EPOCH).TotalSeconds;
-            long lCounter =  lTimeDiff / 30;
-            long lSecToGo = lTimeDiff % 30;
+            long lCounter = this._counter[0];
+            long lSecToGo = this._counter[1];
             string sCopyTxt = "";
-            string sMyCode = "";
             Color cMyColor = Color.Black;
-            
-            if (lSecToGo == 0) {
-                Clipboard.Clear();
+
+            if (lSecToGo == 0)
+            {
+                try {
+                    Clipboard.Clear();
+                }
+                catch {
+                    // Just ignore on any error
+                }
+
+                for (int i = 0; i < this._TOTPAccounts.Count; i++)
+                {
+                    this._TOTPAccounts[i].CurrentCode =
+                        TOTP_GA.GeneratePassword(this._TOTPAccounts[i].Key, lCounter, this._TOTPAccounts[i].CodeLen);
+                }
             }
             if (lSecToGo < 4 || lSecToGo > 26) {
                 cMyColor = Color.Red;
             } else {
                 cMyColor = Color.Black;
             }
-            sCopyTxt = "Copy Code (" + (30 - lSecToGo).ToString() + " s)";
+            sCopyTxt = "Copy Code (" + (30 - lSecToGo).ToString("00") + " s)";
             
             for (int i = 0; i < this._TOTPAccounts.Count; i++) {
-                sMyCode = TOTP_GA.GeneratePassword(this._TOTPAccounts[i].Key, lCounter, this._TOTPAccounts[i].CodeLen);
-                this._TOTPAccounts[i].MenuItem.DropDown.Items[0].Text = sMyCode;
                 this._TOTPAccounts[i].MenuItem.DropDown.Items[0].ForeColor = cMyColor;
                 this._TOTPAccounts[i].MenuItem.DropDown.Items[1].Text = sCopyTxt;
             }
@@ -154,8 +176,8 @@ namespace TOTPGen
                         
                         this._TOTPAccounts[iAcctCnt - 1].MenuItem = this.CreateAcctMenu(csTOTPSecret.ID);
                         
-                        this.msTrayIcon.Items.Insert(iAcctCnt, 
-                                                    this._TOTPAccounts[iAcctCnt - 1].MenuItem);
+                        //this.msTrayIcon.Items.Insert(iAcctCnt, 
+                        //                            this._TOTPAccounts[iAcctCnt - 1].MenuItem);
                         //
                         
                         iHasError = 0;
@@ -172,13 +194,14 @@ namespace TOTPGen
             ToolStripMenuItem tsAcct = new ToolStripMenuItem(AcctID);
             
             ContextMenuStrip tsAcctDrop = new ContextMenuStrip();
+            tsAcctDrop.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tsAcctDrop.Items.Add("------");
             tsAcctDrop.Items.Add("Copy Code");
             tsAcctDrop.Items.Add("Edit");
             tsAcctDrop.Items.Add("Remove");
             tsAcctDrop.Items.Add(AcctID);
             
-            tsAcctDrop.Items[0].Font = new Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold);
+            tsAcctDrop.Items[0].Font = new Font("Arial", 12, FontStyle.Bold);
             tsAcctDrop.Items[1].Click += new System.EventHandler(this.CopyCode);
             tsAcctDrop.Items[2].Click += new System.EventHandler(this.EditAcct);
             tsAcctDrop.Items[3].Click += new System.EventHandler(this.RemoveAcct);

@@ -10,7 +10,7 @@
     <AssemblyName>TOTP Generator</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <ApplicationIcon>..\icon.ico</ApplicationIcon>
+    <ApplicationIcon>totp.ico</ApplicationIcon>
     <NoWin32Manifest>False</NoWin32Manifest>
     <SignAssembly>False</SignAssembly>
     <DelaySign>False</DelaySign>
@@ -71,11 +71,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base32Decode.cs" />
-    <Compile Include="SetSecretForm.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SetSecretForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SetSecretForm.Designer.cs">
       <DependentUpon>SetSecretForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HiddenMain.cs" />
+    <Compile Include="HiddenMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HiddenMain.Designer.cs">
       <DependentUpon>HiddenMain.cs</DependentUpon>
     </Compile>
@@ -88,12 +97,21 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="SetSecretForm.resx">
       <DependentUpon>SetSecretForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HiddenMain.resx">
       <DependentUpon>HiddenMain.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\totp.ico" />
+    <Content Include="totp.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

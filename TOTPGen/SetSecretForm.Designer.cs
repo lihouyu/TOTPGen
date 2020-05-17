@@ -18,8 +18,6 @@ namespace TOTPGen
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtAcctID;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtCodeLen;
-        private System.Windows.Forms.Label txtError;
         
         /// <summary>
         /// Disposes resources used by the form.
@@ -49,105 +47,119 @@ namespace TOTPGen
             this.label2 = new System.Windows.Forms.Label();
             this.txtAcctID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCodeLen = new System.Windows.Forms.TextBox();
-            this.txtError = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.numCodeLen = new System.Windows.Forms.NumericUpDown();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusError = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCodeLen)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSecret
             // 
-            this.txtSecret.Location = new System.Drawing.Point(118, 38);
+            resources.ApplyResources(this.txtSecret, "txtSecret");
             this.txtSecret.Name = "txtSecret";
-            this.txtSecret.PasswordChar = '*';
-            this.txtSecret.Size = new System.Drawing.Size(159, 22);
-            this.txtSecret.TabIndex = 1;
             this.txtSecret.Enter += new System.EventHandler(this.TxtSecretEnter);
             this.txtSecret.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSecretKeyPress);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(202, 66);
+            resources.ApplyResources(this.button1, "button1");
+            this.tableLayoutPanel1.SetColumnSpan(this.button1, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1Click);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 37);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 23);
-            this.label1.TabIndex = 99;
-            this.label1.Text = "Secret Key:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 9);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 23);
-            this.label2.TabIndex = 99;
-            this.label2.Text = "Account Name:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtAcctID
             // 
-            this.txtAcctID.Location = new System.Drawing.Point(118, 10);
+            resources.ApplyResources(this.txtAcctID, "txtAcctID");
             this.txtAcctID.Name = "txtAcctID";
-            this.txtAcctID.Size = new System.Drawing.Size(159, 22);
-            this.txtAcctID.TabIndex = 0;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(14, 65);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 23);
-            this.label3.TabIndex = 99;
-            this.label3.Text = "Code Length:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtCodeLen
+            // tableLayoutPanel1
             // 
-            this.txtCodeLen.Location = new System.Drawing.Point(118, 66);
-            this.txtCodeLen.Name = "txtCodeLen";
-            this.txtCodeLen.Size = new System.Drawing.Size(78, 22);
-            this.txtCodeLen.TabIndex = 2;
-            this.txtCodeLen.Text = "6";
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtAcctID, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtSecret, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.numCodeLen, 1, 2);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
-            // txtError
+            // numCodeLen
             // 
-            this.txtError.ForeColor = System.Drawing.Color.Red;
-            this.txtError.Location = new System.Drawing.Point(14, 99);
-            this.txtError.Name = "txtError";
-            this.txtError.Size = new System.Drawing.Size(263, 23);
-            this.txtError.TabIndex = 100;
-            this.txtError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            resources.ApplyResources(this.numCodeLen, "numCodeLen");
+            this.numCodeLen.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numCodeLen.Minimum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numCodeLen.Name = "numCodeLen";
+            this.numCodeLen.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusError});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Name = "statusStrip1";
+            // 
+            // toolStripStatusError
+            // 
+            this.toolStripStatusError.Name = "toolStripStatusError";
+            resources.ApplyResources(this.toolStripStatusError, "toolStripStatusError");
             // 
             // SetSecretForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 131);
-            this.Controls.Add(this.txtError);
-            this.Controls.Add(this.txtCodeLen);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtAcctID);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtSecret);
-            this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SetSecretForm";
-            this.Text = "Setup Account";
             this.TopMost = true;
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCodeLen)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusError;
+        private System.Windows.Forms.NumericUpDown numCodeLen;
     }
 }

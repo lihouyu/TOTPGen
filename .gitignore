@@ -1,2 +1,4 @@
 TOTPGen/bin
 TOTPGen/obj
+/.vs
+/Lib/ZXing.Net.0.16.5.0
